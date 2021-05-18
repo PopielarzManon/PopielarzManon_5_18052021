@@ -1,0 +1,43 @@
+.row {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.padding {
+  padding: 5rem;
+}
+
+.navbar {
+  background-color: #f3e9f1;
+}
+
+.navbar img {
+  height: 100px;
+}
+
+.navbar {
+  font-size: 1.2rem;
+}
+
+.navbar .nav-item {
+  padding: 1rem;
+}
+
+.navbar .nav-item .icon {
+  padding-top: 0.9rem;
+  font-size: 1rem;
+}
+
+.card {
+  background-color: #f0fbff;
+}
+
+footer {
+  background-color: #f3e9f1;
+}
+
+footer .icon {
+  font-size: 2rem;
+}
+/*# sourceMappingURL=style.css.map */
