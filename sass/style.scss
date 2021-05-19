@@ -1,3 +1,6 @@
+*{
+    scroll-behavior: smooth;
+}
 .row{
     justify-content: center;
 }
@@ -25,7 +28,15 @@
     }
 }
 .card{
-    background-color: #f0fbff;
+    background-color: #f3e9f1;
+    &:hover{
+        transform: scale(1.02);
+        transition: 300ms;
+    }
+    img{
+        padding: 0.5rem;
+       
+    }
 }
 footer{
     background-color:#f3e9f1;
