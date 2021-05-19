@@ -1,0 +1,51 @@
+*{
+    scroll-behavior: smooth;
+}
+.row{
+    justify-content: center;
+}
+.padding{
+    padding: 5rem;
+}
+    .navbar{
+        background-color:#f3e9f1;
+        
+
+
+    img{
+        height: 100px;
+        
+    }
+}
+.navbar{
+    font-size: 1.2rem;
+    .nav-item{
+        padding: 1rem;
+        .icon{
+            padding-top: 0.9rem;
+            font-size: 1rem;
+        }
+    }
+}
+.card{
+    background-color: #f3e9f1;
+    &:hover{
+        transform: scale(1.02);
+        transition: 300ms;
+    }
+    img{
+        padding: 0.5rem;
+       
+    }
+}
+footer{
+    background-color:#f3e9f1;
+    .icon{
+        font-size: 2rem;
+    }
+
+}
+.bg{
+    background-color: #f3e9f1;
+    border-radius: 1rem;
+}
