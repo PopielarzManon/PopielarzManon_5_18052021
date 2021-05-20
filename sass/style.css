@@ -55,4 +55,8 @@ footer {
 footer .icon {
   font-size: 2rem;
 }
+
+ul {
+  list-style: none;
+}
 /*# sourceMappingURL=style.css.map */
