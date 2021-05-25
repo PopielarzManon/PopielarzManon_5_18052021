@@ -28,7 +28,7 @@ function displayArticle(article){
     <div class="card-body text-center">
       <h5 class="card-title">${article.name}</h5>
       <p class="card-text">${article.description}</p>
-      <a href="page2.html" class="btn btn-primary ">Voir les options</a>
+      <a href="./page2.html?id=${article._id}" class="btn btn-primary ">Voir les options</a>
     </div>
   </article>
 </main>
