@@ -59,4 +59,16 @@ footer .icon {
 ul {
   list-style: none;
 }
+
+.btn {
+  background-color: #e5caff;
+}
+
+.btn:hover {
+  background-color: #be92e7;
+}
+
+h5 {
+  font-family: 'Permanent Marker', cursive;
+}
 /*# sourceMappingURL=style.css.map */

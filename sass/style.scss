@@ -48,3 +48,13 @@ footer{
 ul{
     list-style: none;
 }
+.btn{
+    background-color: rgb(229, 202, 255);
+    &:hover{
+        background-color: rgb(190, 146, 231); ;
+    }
+}
+h5{
+    font-family: 'Permanent Marker', cursive;
+
+}

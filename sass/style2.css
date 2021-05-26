@@ -52,4 +52,17 @@ footer .icon {
 ul {
   list-style: none;
 }
+
+.btn {
+  background-color: #e5caff;
+}
+
+.btn:hover {
+  background-color: #be92e7;
+}
+
+h4 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 3rem;
+}
 /*# sourceMappingURL=style2.css.map */

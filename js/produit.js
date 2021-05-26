@@ -41,7 +41,7 @@ let produit = fetch("http://localhost:3000/api/teddies/" + [_id])
             <option value="">--Choisissez une option--</option>
         </select>
       </div>
-      <button class="details__btn" id="addToCart" type="button" onclick="addToCart()">
+      <button class="details__btn btn" id="addToCart" type="button" onclick="addToCart()">
         Ajouter au panier
       </button>
  
