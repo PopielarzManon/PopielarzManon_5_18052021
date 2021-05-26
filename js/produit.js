@@ -34,28 +34,23 @@ let produit = fetch("http://localhost:3000/api/teddies/" + [_id])
         <div class="card-block px-2 pb-5 "  style="width: 25rem;">
         <h4 class="card-title pt-4">${response.name}</h4>
         <p class="card-text">${response.description}</p>
-        <p class="card-text">${response.price} $ </p>
-        <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle mb-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        Choisissez la couleur
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">${response.colors[0]}</a></li>
-        <li><a class="dropdown-item" href="#">Beige</a></li>
-        <li><a class="dropdown-item" href="#">Noir</a></li>
-        </ul>
-        </div>
-        <button type="button" class="btn btn-info">Ajouter au panier</button>
-        </div>
+        <p class="card-text"><b>${response.price/100} $ </b></p>
+        <div class="details__options">
+        <label for="colors-select">Choisissez une couleur :</label>
+        <select class="options__select" name="colors" id="colors-select" required>
+            <option value="">--Choisissez une option--</option>
+        </select>
+      </div>
+      <button class="details__btn" id="addToCart" type="button" onclick="addToCart()">
+        Ajouter au panier
+      </button>
+ 
         `;
-           
-        })
-        console.log(produit)
-
-function getColors(){
-
-    
-}
-
-
         
+         for (let i = 0; i < response.colors.length ; i++ ){
+            const option = document.createElement("option");              //création de <option>
+            option.value = `${response.colors[i]}`;                           // ça récupère l'index du tableau 
+            option.innerHTML = `${response.colors[i]}`;                      // le nom de la lentille est ajouté à <option> 
+            document.getElementById("colors-select").appendChild(option);  //ça ajoute <option> en enfant de l'id #lense-select 
+          };
+    })
