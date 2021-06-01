@@ -6,7 +6,7 @@ const urlSearchParams = new URLSearchParams(queryString_url_id);
 
 const _id = urlSearchParams.get("id");
 
-let produit = fetch("http://localhost:3000/api/teddies/" +_id)
+fetch("http://localhost:3000/api/teddies/" +_id)
 
     .then(async (result_) => {
             const response = await result_.json()
@@ -20,8 +20,8 @@ let produit = fetch("http://localhost:3000/api/teddies/" +_id)
         <p class="card-text">${response.description}</p>
         <p class="card-text"><b>${response.price/100} $ </b></p>
         <div class="details__options">
-        <label for="colors-select">Choisissez une couleur :</label>
-        <select class="options__select" name="colors" id="colors-select" required>
+        <label for="colors_select">Choisissez une couleur :</label>
+        <select class="options__select" name="colors" id="colors_select" required>
             <option value="">--Choisissez une option--</option>
         </select>
       </div>
@@ -32,9 +32,32 @@ let produit = fetch("http://localhost:3000/api/teddies/" +_id)
         `;
         
          for (let i = 0; i < response.colors.length ; i++ ){
-            const option = document.createElement("option");              //création de <option>
-            option.value = `${response.colors[i]}`;                           // ça récupère l'index du tableau 
-            option.innerHTML = `${response.colors[i]}`;                      // le nom de la lentille est ajouté à <option> 
-            document.getElementById("colors-select").appendChild(option);  //ça ajoute <option> en enfant de l'id #lense-select 
+            const option = document.createElement("option");              //création de <option></option>
+            option.value = `${response.colors[i]}`;                           // ça récupère l'index du tableau <option value="brown"></option>
+            option.innerHTML = `${response.colors[i]}`;                      // le nom de la lentille est ajouté à <option> // <option value="brown">brown</option>
+            document.getElementById("colors_select").appendChild(option);  //ça ajoute  <option value="brown">brown</option> en enfant de l'id #lense-select 
           };
-    })
+          //-----PANIER-----------//
+          //ajout panier//
+          const btnPanier = document.querySelector("#addToCart")
+          console.log(btnPanier)
+          //envoi//
+          btnPanier.addEventListener("click", (event)=>{
+            event.preventDefault();
+          })
+         //recp form//
+          let choixProduit = {
+            nom:response.name,
+            idDuProduit:response._id,
+            quantite: 1,
+            prix: response.price/100
+          }
+          console.log(choixProduit)
+        //----Local stock---//
+          
+   
+        })
+
+
+    
+
