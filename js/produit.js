@@ -25,7 +25,7 @@ fetch("http://localhost:3000/api/teddies/" +_id)
             <option value="">--Choisissez une option--</option>
         </select>
       </div>
-      <button class="details__btn btn" id="addToCart" type="button" onclick="addToCart()">
+      <button class="details__btn btn" id="addToCart" type="submit">
         Ajouter au panier
       </button>
  
@@ -34,29 +34,57 @@ fetch("http://localhost:3000/api/teddies/" +_id)
          for (let i = 0; i < response.colors.length ; i++ ){
             const option = document.createElement("option");              //création de <option></option>
             option.value = `${response.colors[i]}`;                           // ça récupère l'index du tableau <option value="brown"></option>
-            option.innerHTML = `${response.colors[i]}`;                      // le nom de la lentille est ajouté à <option> // <option value="brown">brown</option>
+            option.innerHTML = `${response.colors[i]}`;                      // le nom de la couleur est ajouté à <option> // <option value="brown">brown</option>
             document.getElementById("colors_select").appendChild(option);  //ça ajoute  <option value="brown">brown</option> en enfant de l'id #lense-select 
           };
+         
+         
+         
+         
+         
+         
           //-----PANIER-----------//
           //ajout panier//
           const btnPanier = document.querySelector("#addToCart")
-          console.log(btnPanier)
           //envoi//
           btnPanier.addEventListener("click", (event)=>{
             event.preventDefault();
-          })
-         //recp form//
+            if(itemStorage){
+              itemStorage.push(choixProduit)
+              localStorage.setItem("ours",JSON.stringify(itemStorage))
+              alert(
+                `Vous avez ajouté "${response.name}" à votre panier`
+              );
+    
+            }
+            else{
+              itemStorage = []
+              itemStorage.push(choixProduit)
+              localStorage.setItem("ours",JSON.stringify(itemStorage))
+              alert(
+                `Vous avez ajouté "${response.name}" à votre panier`
+              );
+            }
+           
+              })
+
+                     //recp form//
           let choixProduit = {
             nom:response.name,
             idDuProduit:response._id,
             quantite: 1,
             prix: response.price/100
           }
-          console.log(choixProduit)
+
         //----Local stock---//
+        let itemStorage = JSON.parse(localStorage.getItem("ours"))
+        
+
           
    
         })
+        console.log(choixProduit)
+
 
 
     
