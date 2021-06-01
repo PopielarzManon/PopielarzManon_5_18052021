@@ -6,25 +6,9 @@ const urlSearchParams = new URLSearchParams(queryString_url_id);
 
 const _id = urlSearchParams.get("id");
 
-/*function getObjects() {
-    return fetch ("http://localhost:3000/api/teddies")
-         .then(function(respAll) {
-            return respAll.json()
-         })
-     }
+let produit = fetch("http://localhost:3000/api/teddies/" +_id)
 
-async function getProduit(){
-    let produits = await getObjects()
-
-
-    const soloItem = produits.find(produitSolo =>  produitSolo._id === idUrl)
-    console.log(soloItem)
-}
-getProduit();
-*/
-
-let produit = fetch("http://localhost:3000/api/teddies/" + [_id])
-    .then(async result_ => {
+    .then(async (result_) => {
             const response = await result_.json()
 
      document.getElementById("produitp").innerHTML += 

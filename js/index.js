@@ -31,6 +31,5 @@ function displayArticle(article){
       <a href="./page2.html?id=${article._id}" class="btn">Voir les options</a>
     </div>
   </article>
-</main>
 `
 }
