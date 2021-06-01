@@ -76,4 +76,15 @@ ul {
 h4 {
   font-family: 'Permanent Marker', cursive;
 }
+
+.quant {
+  border-bottom: black 1px solid;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.fin {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
 /*# sourceMappingURL=style3.css.map */
