@@ -55,7 +55,7 @@ fetch("http://localhost:3000/api/teddies/" + _id).then(async (result_) => {
     }
   });
 
-  //recp form//
+  //recup form//
   let choixProduit = {
     nom: response.name,
     idDuProduit: response._id,
@@ -66,4 +66,5 @@ fetch("http://localhost:3000/api/teddies/" + _id).then(async (result_) => {
   //----Local stock---//
   let itemStorage = JSON.parse(localStorage.getItem("ours"));
 });
+
 
