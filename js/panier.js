@@ -45,11 +45,10 @@ for (let l = 0; l < deleteButton.length; l++) {
 
 //vider panier
 const deletePanierHtml = `
-<button class="deleteAll btn container d-flex justify-content-center">Vider le panier</button>`;
+<button class="deleteAll container d-flex justify-content-center btn mt-4">Vider le panier</button>`;
 positionElementPanier.insertAdjacentHTML("beforeend", deletePanierHtml);
 
 const deletePanier = document.querySelector(".deleteAll")
-console.log(deletePanier);
 
 //supprimer ours
 
@@ -67,3 +66,50 @@ deletePanier.addEventListener("click", (e) => {
     alert("Votre panier est déjà vide !");
   }
 });
+///MONTANT//
+let totalPrice =[]
+for (let = m = 0 ; m < itemStorage.length; m++){
+  let prixPanier = itemStorage[m].prix
+
+  totalPrice.push(prixPanier)
+  
+
+}
+
+// + tout les prix
+const reducer = (accumulator, currentValue) => accumulator + currentValue
+const calculTotal = totalPrice.reduce(reducer);
+
+
+const affichagePrixHtml = `
+<div class="affichage text-center container pt-5"> Le montant total de votre panier est de : ${calculTotal} $ </div>`
+
+
+positionElementPanier.insertAdjacentHTML("beforeend", affichagePrixHtml)
+
+
+//ad event
+const btnEnvoi = document.querySelector("#envoi")
+
+btnEnvoi.addEventListener("click",(e)=> {
+  e.preventDefault()
+  //recupe valeur commande
+
+const formValues ={
+  mail : document.querySelector("#mail").value,
+  nom : document.querySelector("#nom").value,
+  adresse : document.querySelector("#adresse").value,
+  poste : document.querySelector("#poste").value,
+  ville : document.querySelector("#ville").value
+}
+
+//envoyer local
+const sendTo = {
+  itemStorage,
+  formValues
+}
+console.log(sendTo);
+
+localStorage.setItem("formValues", JSON.stringify(formValues))
+
+})

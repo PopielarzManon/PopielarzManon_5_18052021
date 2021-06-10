@@ -80,15 +80,15 @@
 
     <!--FORMULAIRE-->
     <div class="container-fluid bg pb-5 pt-5 mt-3 mb-3">
-      <h4>Payer</h4>
+      <h4>Payement</h4>
       <div class="row g-2 p-2 m-2">
         <div class="col-md">
           <div class="form-floating">
             <input
               type="email"
               class="form-control"
-              id="floatingInputGrid"
-              required=""
+              id="mail"
+              required
             />
             <label for="floatingInputGrid"> Adresse Email</label>
           </div>
@@ -114,31 +114,31 @@
       <div class="row g-2 p-2 m-2">
         <div class="col-md">
           <div class="form-floating">
-            <input type="text" class="form-control floatingInputGrid" />
+            <input type="text" required class="form-control floatingInputGrid" id="nom" />
             <label for="floatingInputGrid"> Nom Prénom</label>
           </div>
         </div>
         <div class="col-md mb-5">
           <div class="form-floating">
-            <input type="text" class="form-control floatingInputGrid" />
+            <input type="text" class="form-control floatingInputGrid" required id="adresse"/>
             <label for="floatingInputGrid"> Adresse</label>
           </div>
         </div>
         <div class="col-md">
           <div class="form-floating">
-            <input type="text" class="form-control floatingInputGrid" />
+            <input type="text" class="form-control floatingInputGrid" required id="poste"/>
             <label for="floatingInputGrid"> Code Postal</label>
           </div>
         </div>
         <div class="col-md">
           <div class="form-floating">
-            <input type="text" class="form-control floatingInputGrid" />
+            <input type="text" class="form-control floatingInputGrid" required  id="ville"/>
             <label for="floatingInputGrid"> Ville</label>
           </div>
         </div>
       </div>
-      <button type="button" class="btn justify-self-center">
-        Valider et Payer
+      <button type="submit" class="btn container d-flex justify-content-center text-center"id="envoi">
+        Envoyer votre commande
       </button>
     </div>
 
