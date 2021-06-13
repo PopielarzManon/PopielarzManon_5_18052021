@@ -100,32 +100,37 @@ btnEnvoi.addEventListener("click", (e) => {
   const regExText = (value) => {
     return /^[A-Za-z 1-9]{3,25}$/.test(value);
   };
+  // Foncton pour erreur in put
+
+ 
   //------------------------CONTROLE FORMULAIRE-----------------------------//
   function controleNom() {
     const okNom = formValues.nom;
     if (regExText(okNom)) {
+      document.querySelector(".noName").textContent = ""
       return true;
     } else {
       document.querySelector(".noName").textContent = "Veuiller rentrer un nom valide"
-      alert("Veuillez entrez des Nom et Prénom valides");
       return false;
     }
   }
   function controleAdresse() {
     const okAdresse = formValues.adresse;
     if (regExText(okAdresse)) {
+      document.querySelector(".noAdresse").textContent = ""
       return true;
     } else {
-      alert("Votre adresse n'est pas valide");
+      document.querySelector(".noAdresse").textContent = "Veuiller rentrer une adresse valide"
       return false;
     }
   }
   function controleVille() {
     const okVille = formValues.ville;
     if (regExText(okVille)) {
+      document.querySelector(".noVille").textContent = ""
       return true;
     } else {
-      alert("Ville Invalide");
+      document.querySelector(".noVille").textContent = "Veuiller rentrer une ville valide"
       return false;
     }
   }
@@ -133,9 +138,10 @@ btnEnvoi.addEventListener("click", (e) => {
   function controlePoste() {
     const okPoste = formValues.poste;
     if (/^[0-9]{5}$/.test(okPoste)) {
+      document.querySelector(".noPoste").textContent = ""
       return true;
     } else {
-      alert("Le code postal n'est pas valide");
+      document.querySelector(".noPoste").textContent = "Veuiller rentrer un code postal valide"
       return false;
     }
   }
@@ -143,9 +149,10 @@ btnEnvoi.addEventListener("click", (e) => {
   function controleMail() {
     const okMail = formValues.mail;
     if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(okMail)) {
+      document.querySelector(".noMail").textContent = ""
       return true;
     } else {
-      alert("L'adresse mail n'est pas valide");
+      document.querySelector(".noMail").textContent = "Veuiller rentrer un mail valide"
       return false;
     }
   }
