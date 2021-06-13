@@ -174,4 +174,16 @@ btnEnvoi.addEventListener("click", (e) => {
     itemStorage,
     formValues,
   };
+//envoi vers serveur
+const promise01 = fetch("https://jsonplaceholder.typicode.com/users", {
+  method: "POST",
+  body: JSON.stringify(sendTo),
+  headers: {
+    "Content-Type" : "application/json",
+  },
+ 
+});
+console.log(promise01);
+console.log("promise01");
+//result serveur
 });
