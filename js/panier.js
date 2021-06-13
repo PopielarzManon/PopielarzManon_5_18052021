@@ -48,7 +48,7 @@ const deletePanierHtml = `
 <button class="deleteAll container d-flex justify-content-center btn mt-4">Vider le panier</button>`;
 positionElementPanier.insertAdjacentHTML("beforeend", deletePanierHtml);
 
-const deletePanier = document.querySelector(".deleteAll")
+const deletePanier = document.querySelector(".deleteAll");
 
 //supprimer ours
 
@@ -61,55 +61,110 @@ deletePanier.addEventListener("click", (e) => {
     //Rechargement de la page panier
 
     window.location.href = "checkout.html";
-  }
-  else {
+  } else {
     alert("Votre panier est déjà vide !");
   }
 });
 ///MONTANT//
-let totalPrice =[]
-for (let = m = 0 ; m < itemStorage.length; m++){
-  let prixPanier = itemStorage[m].prix
+let totalPrice = [];
+for (let = m = 0; m < itemStorage.length; m++) {
+  let prixPanier = itemStorage[m].prix;
 
-  totalPrice.push(prixPanier)
-  
-
+  totalPrice.push(prixPanier);
 }
 
 // + tout les prix
-const reducer = (accumulator, currentValue) => accumulator + currentValue
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const calculTotal = totalPrice.reduce(reducer);
 
-
 const affichagePrixHtml = `
-<div class="affichage text-center container pt-5"> Le montant total de votre panier est de : ${calculTotal} $ </div>`
+<div class="affichage text-center container pt-5"> Le montant total de votre panier est de : ${calculTotal} $ </div>`;
 
-
-positionElementPanier.insertAdjacentHTML("beforeend", affichagePrixHtml)
-
+positionElementPanier.insertAdjacentHTML("beforeend", affichagePrixHtml);
 
 //ad event
-const btnEnvoi = document.querySelector("#envoi")
+const btnEnvoi = document.querySelector("#envoi");
 
-btnEnvoi.addEventListener("click",(e)=> {
-  e.preventDefault()
+btnEnvoi.addEventListener("click", (e) => {
+  e.preventDefault();
   //recupe valeur commande
 
-const formValues ={
-  mail : document.querySelector("#mail").value,
-  nom : document.querySelector("#nom").value,
-  adresse : document.querySelector("#adresse").value,
-  poste : document.querySelector("#poste").value,
-  ville : document.querySelector("#ville").value
-}
+  const formValues = {
+    mail: document.querySelector("#mail").value,
+    nom: document.querySelector("#nom").value,
+    adresse: document.querySelector("#adresse").value,
+    poste: document.querySelector("#poste").value,
+    ville: document.querySelector("#ville").value,
+  };
 
-//envoyer local
-const sendTo = {
-  itemStorage,
-  formValues
-}
-console.log(sendTo);
+  const regExText = (value) => {
+    return /^[A-Za-z 1-9]{3,25}$/.test(value);
+  };
+  //------------------------CONTROLE FORMULAIRE-----------------------------//
+  function controleNom() {
+    const okNom = formValues.nom;
+    if (regExText(okNom)) {
+      return true;
+    } else {
+      document.querySelector(".noName").textContent = "Veuiller rentrer un nom valide"
+      alert("Veuillez entrez des Nom et Prénom valides");
+      return false;
+    }
+  }
+  function controleAdresse() {
+    const okAdresse = formValues.adresse;
+    if (regExText(okAdresse)) {
+      return true;
+    } else {
+      alert("Votre adresse n'est pas valide");
+      return false;
+    }
+  }
+  function controleVille() {
+    const okVille = formValues.ville;
+    if (regExText(okVille)) {
+      return true;
+    } else {
+      alert("Ville Invalide");
+      return false;
+    }
+  }
 
-localStorage.setItem("formValues", JSON.stringify(formValues))
+  function controlePoste() {
+    const okPoste = formValues.poste;
+    if (/^[0-9]{5}$/.test(okPoste)) {
+      return true;
+    } else {
+      alert("Le code postal n'est pas valide");
+      return false;
+    }
+  }
 
-})
+  function controleMail() {
+    const okMail = formValues.mail;
+    if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(okMail)) {
+      return true;
+    } else {
+      alert("L'adresse mail n'est pas valide");
+      return false;
+    }
+  }
+  //CONDITION LOCAL STORAGE OK//
+  if (
+    controleNom() &&
+    controleVille() &&
+    controleAdresse() &&
+    controlePoste() &&
+    controleMail()
+  ) {
+    localStorage.setItem("formValues", JSON.stringify(formValues));
+  } else {
+   alert ("Le formulaire n'est pas complet !")
+  }
+
+  //envoyer local
+  const sendTo = {
+    itemStorage,
+    formValues,
+  };
+});

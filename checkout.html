@@ -1,80 +1,55 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?"
-    />
-    <link rel="shortcut icon" type="image/png" href="./img/fav.png" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
-      rel="stylesheet"
-    />
 
-    <link rel="stylesheet" href="sass/style3.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias aut, repellat ipsum facere voluptate dicta obcaecati deserunt nobis suscipit eaque?" />
+  <link rel="shortcut icon" type="image/png" href="./img/fav.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 
-    <title>Orinoco</title>
-  </head>
-  <body>
-    <!--NAVIGATION-->
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"
-          ><img src="img/orinoco.png" alt="logo orinoco"
-        /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse justify-content-end align-self-center"
-          id="navbarNavDropdown"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.html"
-                >Accueil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link icon" href="#"
-                ><i class="fas fa-shopping-cart"></i
-              ></a>
-            </li>
-          </ul>
-        </div>
+  <link rel="stylesheet" href="sass/style3.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
+
+  <title>Orinoco</title>
+</head>
+
+<body>
+  <!--NAVIGATION-->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html"><img src="img/orinoco.png" alt="logo orinoco" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end align-self-center" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.html">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link icon" href="#"><i class="fas fa-shopping-cart"></i></a>
+          </li>
+        </ul>
       </div>
-    </nav>
-    <!-- PANIER-->
+    </div>
+  </nav>
+  <!-- PANIER-->
 
-    <div class="container-fluid bg pb-5 pt-5 mt-3 mb-3">
-      <div class="justify-content-center" id="panier">
-        <h4 class="text-center">Votre Panier.</h4>
-        <div id="recap">
+  <div class="container-fluid bg pb-5 pt-5 mt-3 mb-3">
+    <div class="justify-content-center" id="panier">
+      <h4 class="text-center">Votre Panier.</h4>
+      <div id="recap">
 
-        </div>
       </div>
-      <div>
+    </div>
+    <div>
     </div>
 
 
@@ -84,23 +59,13 @@
       <div class="row g-2 p-2 m-2">
         <div class="col-md">
           <div class="form-floating">
-            <input
-              type="email"
-              class="form-control"
-              id="mail"
-              required
-            />
+            <input type="email" class="form-control" id="mail" required />
             <label for="floatingInputGrid"> Adresse Email</label>
           </div>
         </div>
         <div class="col-md">
           <div class="form-floating">
-            <select
-              class="form-select"
-              id="floatingSelectGrid"
-              aria-label="Floating label select example"
-              required=""
-            >
+            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" required="">
               <option selected>Mode de payement</option>
               <option value="1">Paypal</option>
               <option value="2">Visa</option>
@@ -115,29 +80,29 @@
         <div class="col-md">
           <div class="form-floating">
             <input type="text" required class="form-control floatingInputGrid" id="nom" />
-            <label for="floatingInputGrid"> Nom Prénom</label>
+            <label for="floatingInputGrid"></span> Nom Prénom</label> <span class="noName oupsi"></span>
           </div>
         </div>
         <div class="col-md mb-5">
           <div class="form-floating">
-            <input type="text" class="form-control floatingInputGrid" required id="adresse"/>
+            <input type="text" class="form-control floatingInputGrid" required id="adresse" />
             <label for="floatingInputGrid"> Adresse</label>
           </div>
         </div>
         <div class="col-md">
           <div class="form-floating">
-            <input type="text" class="form-control floatingInputGrid" required id="poste"/>
+            <input type="text" class="form-control floatingInputGrid" required id="poste" />
             <label for="floatingInputGrid"> Code Postal</label>
           </div>
         </div>
         <div class="col-md">
           <div class="form-floating">
-            <input type="text" class="form-control floatingInputGrid" required  id="ville"/>
+            <input type="text" class="form-control floatingInputGrid" required id="ville" />
             <label for="floatingInputGrid"> Ville</label>
           </div>
         </div>
       </div>
-      <button type="submit" class="btn container d-flex justify-content-center text-center"id="envoi">
+      <button type="submit" class="btn container d-flex justify-content-center text-center" id="envoi">
         Envoyer votre commande
       </button>
     </div>
@@ -147,19 +112,13 @@
       <div class="text-center">
         <ul class="container d-flex justify-content-center">
           <li class="nav-item">
-            <a class="nav-link icon link-secondary" href="#"
-              ><i class="fab fa-twitter"></i
-            ></a>
+            <a class="nav-link icon link-secondary" href="#"><i class="fab fa-twitter"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link icon link-secondary" href="#"
-              ><i class="fab fa-instagram"></i
-            ></a>
+            <a class="nav-link icon link-secondary" href="#"><i class="fab fa-instagram"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link icon link-secondary" href="#"
-              ><i class="fab fa-facebook"></i
-            ></a>
+            <a class="nav-link icon link-secondary" href="#"><i class="fab fa-facebook"></i></a>
           </li>
         </ul>
       </div>
@@ -171,10 +130,9 @@
 
     <!-- JQUERIES -->
     <script src="./js/panier.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+      crossorigin="anonymous"></script>
+</body>
+
 </html>
