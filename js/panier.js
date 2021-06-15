@@ -1,23 +1,26 @@
-let products = JSON.parse(localStorage.getItem("ours"));
+let valueProducts = JSON.parse(localStorage.getItem("ours"));
+
+
+
 //affichage produit panier//
 
 const positionElementPanier = document.getElementById("recap");
 let structurePanier = [];
 
-if (products === null || products == 0) {
+if (valueProducts === null || valueProducts == 0) {
   const vide = `
 <div class="text-center">Votre panier est vide !</div>`;
   positionElementPanier.innerHTML = vide;
 } else {
-  for (k = 0; k < products.length; k++) {
+  for (k = 0; k < valueProducts.length; k++) {
     structurePanier =
       structurePanier +
       `
-        <div class="quant container d-flex justify-content-between "> ${products[k].nom} <p>${products[k].prix} $ <button class="delete" ><i class="fas fa-trash"></i></button></p></div>
+        <div class="quant container d-flex justify-content-between "> ${valueProducts[k].nom} <p>${valueProducts[k].prix} $ <button class="delete" ><i class="fas fa-trash"></i></button></p></div>
       </div>
         `;
   }
-  if (k === products.length) {
+  if (k === valueProducts.length) {
     positionElementPanier.innerHTML = structurePanier;
   }
 }
@@ -31,13 +34,13 @@ for (let l = 0; l < deleteButton.length; l++) {
   deleteButton[l].addEventListener("click", (event) => {
     event.preventDefault();
 
-    let idDelete = products[l].idDuProduit;
+    let idDelete = valueProducts[l].idDuProduit;
 
     //filtre
-    products = products.filter((el) => el.idDuProduit !== idDelete);
-    console.log(products);
+    valueProducts = valueProducts.filter((el) => el.idDuProduit !== idDelete);
+    console.log(valueProducts);
     //local storage changement
-    localStorage.setItem("ours", JSON.stringify(products));
+    localStorage.setItem("ours", JSON.stringify(valueProducts));
     alert(`Vous avez suprimé un article de votre panier`);
     window.location.href = "checkout.html";
   });
@@ -54,7 +57,7 @@ const deletePanier = document.querySelector(".deleteAll");
 
 deletePanier.addEventListener("click", (e) => {
   e.preventDefault;
-  if (products) {
+  if (valueProducts) {
     localStorage.removeItem("ours");
     alert("Votre panier a été vidé !");
 
@@ -67,8 +70,8 @@ deletePanier.addEventListener("click", (e) => {
 });
 ///MONTANT//
 let totalPrice = [];
-for (let m = 0; m < products.length; m++) {
-  let prixPanier = products[m].prix;
+for (let m = 0; m < valueProducts.length; m++) {
+  let prixPanier = valueProducts[m].prix;
 
   totalPrice.push(prixPanier);
 }
@@ -181,9 +184,20 @@ btnEnvoi.addEventListener("click", (e) => {
   } else {
     alert("Le formulaire n'est pas complet !");
   }
+  
+  
+  ////////////////////////////////////////////////////////////////
+  
+  const products = [] ;
+for (let t = 0; t < valueProducts.length; t++) {
+  let getId = valueProducts[t].idDuProduit
+  products.push(getId)
+  
+}
+/////////////////////////////////////////////////////////////
 
   //envoyer local
-  const sendTo = () => {
+  let sendTo = {
     products,
     contact
   };
