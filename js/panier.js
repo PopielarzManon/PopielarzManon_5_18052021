@@ -67,7 +67,7 @@ deletePanier.addEventListener("click", (e) => {
 });
 ///MONTANT//
 let totalPrice = [];
-for (let = m = 0; m < itemStorage.length; m++) {
+for (let m = 0; m < itemStorage.length; m++) {
   let prixPanier = itemStorage[m].prix;
 
   totalPrice.push(prixPanier);
@@ -98,39 +98,57 @@ btnEnvoi.addEventListener("click", (e) => {
   };
 
   const regExText = (value) => {
-    return /^[A-Za-z 1-9]{3,25}$/.test(value);
+    return /^[A-Za-z 0-9]{3,25}$/.test(value);
   };
   // Foncton pour erreur in put
 
- 
   //------------------------CONTROLE FORMULAIRE-----------------------------//
+
+  ///////////////////////////////////////////////////////////////////////////
+
+  // function controleNom() {
+  //   const okNom = formValues.nom;
+  //   if (regExText(okNom)) {
+  //     document.querySelector(".noName").textContent = "";
+  //     return true;
+  //   } else {
+  //     document.querySelector(".noName").textContent =
+  //       "Veuiller rentrer un nom valide";
+  //     return false;
+  //   }
+  // }
+
+  ////////////////////////////////////////////////////////////////////////////
   function controleNom() {
     const okNom = formValues.nom;
     if (regExText(okNom)) {
-      document.querySelector(".noName").textContent = ""
+      document.querySelector(".noName").textContent = "";
       return true;
     } else {
-      document.querySelector(".noName").textContent = "Veuiller rentrer un nom valide"
+      document.querySelector(".noName").textContent =
+        "Veuiller rentrer un nom valide";
       return false;
     }
   }
   function controleAdresse() {
     const okAdresse = formValues.adresse;
     if (regExText(okAdresse)) {
-      document.querySelector(".noAdresse").textContent = ""
+      document.querySelector(".noAdresse").textContent = "";
       return true;
     } else {
-      document.querySelector(".noAdresse").textContent = "Veuiller rentrer une adresse valide"
+      document.querySelector(".noAdresse").textContent =
+        "Veuiller rentrer une adresse valide";
       return false;
     }
   }
   function controleVille() {
     const okVille = formValues.ville;
     if (regExText(okVille)) {
-      document.querySelector(".noVille").textContent = ""
+      document.querySelector(".noVille").textContent = "";
       return true;
     } else {
-      document.querySelector(".noVille").textContent = "Veuiller rentrer une ville valide"
+      document.querySelector(".noVille").textContent =
+        "Veuiller rentrer une ville valide";
       return false;
     }
   }
@@ -138,10 +156,11 @@ btnEnvoi.addEventListener("click", (e) => {
   function controlePoste() {
     const okPoste = formValues.poste;
     if (/^[0-9]{5}$/.test(okPoste)) {
-      document.querySelector(".noPoste").textContent = ""
+      document.querySelector(".noPoste").textContent = "";
       return true;
     } else {
-      document.querySelector(".noPoste").textContent = "Veuiller rentrer un code postal valide"
+      document.querySelector(".noPoste").textContent =
+        "Veuiller rentrer un code postal valide";
       return false;
     }
   }
@@ -149,13 +168,17 @@ btnEnvoi.addEventListener("click", (e) => {
   function controleMail() {
     const okMail = formValues.mail;
     if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(okMail)) {
-      document.querySelector(".noMail").textContent = ""
+      document.querySelector(".noMail").textContent = "";
       return true;
     } else {
-      document.querySelector(".noMail").textContent = "Veuiller rentrer un mail valide"
+      document.querySelector(".noMail").textContent =
+        "Veuiller rentrer un mail valide";
       return false;
     }
   }
+
+
+
   //CONDITION LOCAL STORAGE OK//
   if (
     controleNom() &&
@@ -166,24 +189,64 @@ btnEnvoi.addEventListener("click", (e) => {
   ) {
     localStorage.setItem("formValues", JSON.stringify(formValues));
   } else {
-   alert ("Le formulaire n'est pas complet !")
+    alert("Le formulaire n'est pas complet !");
   }
 
+/**
+ *
+ * Expects request to contain:
+ * contact: {
+ *   firstName: string,
+ *   lastName: string,
+ *   address: string,
+ *   city: string,
+ *   email: string
+ * }
+ * products: [string] <-- array of product _id
+ *
+ */
+
+ const sendTo = {
+   contact: {
+
+     firstName: 'hello',
+     lastName: 'hello',
+     address: 'hello',
+     city: 'hello',
+     email: 'hello@mail.fr'
+    },
+     products: ['5be9c8541c9d440000665243']
+    };
+
   //envoyer local
-  const sendTo = {
+/*  const sendTo = {
     itemStorage,
     formValues,
-  };
-//envoi vers serveur
-const promise01 = fetch("https://jsonplaceholder.typicode.com/users", {
-  method: "POST",
-  body: JSON.stringify(sendTo),
-  headers: {
-    "Content-Type" : "application/json",
-  },
- 
-});
-console.log(promise01);
-console.log("promise01");
-//result serveur
+  };¨*/
+  //envoi vers serveur
+  const promise01 = fetch("http://localhost:3000/api/teddies"), {
+    method: "POST",
+    body: JSON.stringify(sendTo),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  console.log(promise01);
+  console.log("promise01");
+  //result serveur
+  promise01.then(async (response) => {
+    try {
+      const contenu = await response.json();
+    } catch (e) {}
+  });
+  // const promise02 = fetch("https://jsonplaceholder.typicode.com/users");
+  // promise02.then(async (response) => {
+  //   try {
+  //     console.log(promise02);
+  //     console.log("promise02");
+  //     const dataSurServeur = await response.json;
+  //     console.log(dataSurServeur);
+  //     console.log("dataSurServeur");
+  //   } catch (e) {}
+  // });
 });
