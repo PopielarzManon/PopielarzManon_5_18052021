@@ -70,22 +70,3 @@ function displayArticle(article) {
     document.getElementById("colors_select").appendChild(option); //ça ajoute  <option value="brown">brown</option> en enfant de l'id #lense-select
   }
 }
-
-// cours mentorat /**
-//  * Additionne deux nombre et renvoit le résultat
-//  * @param {number} a le 1er chiffre
-//  * @param {number} b le 2eme chiffre
-//  * @returns le résultat de l'addition
-//  *
-// function addition(a, b) {
-//  return a + b;
-// }
-
-// let resultat = addition(10, 14);
-
-// let resultat2 = addition(2, 14);
-// let resultat2 = 2+14
-
-// if (resultat > 18 && resultat2 > 18) {
-//   console.log('tous les resultats sont supérieur à 18');
-// }
