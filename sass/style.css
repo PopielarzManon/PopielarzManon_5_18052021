@@ -71,4 +71,17 @@ ul {
 h5 {
   font-family: 'Permanent Marker', cursive;
 }
+
+#bg {
+  background-color: #f3e9f1;
+}
+
+#back {
+  border-style: none;
+  background-color: #f3e9f1;
+}
+
+.typo {
+  font-family: 'Permanent Marker', cursive;
+}
 /*# sourceMappingURL=style.css.map */

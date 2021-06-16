@@ -1,7 +1,5 @@
 let valueProducts = JSON.parse(localStorage.getItem("ours"));
 
-
-
 //affichage produit panier//
 
 const positionElementPanier = document.getElementById("recap");
@@ -93,22 +91,19 @@ btnEnvoi.addEventListener("click", (e) => {
   //recupe valeur commande
 
   const contact = {
-    
     firstName: document.querySelector("#firstName").value,
     lastName: document.querySelector("#lastName").value,
     address: document.querySelector("#adresse").value,
     city: document.querySelector("#ville").value,
     email: document.querySelector("#mail").value,
-    
   };
   const poste = {
-    poste: document.querySelector("#poste").value
+    poste: document.querySelector("#poste").value,
   };
 
   const regExText = (value) => {
     return /^[A-Za-z 0-9]{3,25}$/.test(value);
   };
-
 
   //------------------------CONTROLE FORMULAIRE-----------------------------//
 
@@ -170,46 +165,50 @@ btnEnvoi.addEventListener("click", (e) => {
     }
   }
 
-//////////////////////////////////////////////////////////////////////////////////////
-const products = [] ;
-for (let t = 0; t < valueProducts.length; t++) {
-  let getId = valueProducts[t].idDuProduit
-  products.push(getId)
-  
-}
+  //////////////////////////////////////////////////////////////////////////////////////
+  const products = [];
+  for (let t = 0; t < valueProducts.length; t++) {
+    let getId = valueProducts[t].idDuProduit;
+    products.push(getId);
+  }
   //CONDITION LOCAL STORAGE OK//
   if (
-    controleNom() && controleVille() && controleAdresse() && controleMail() && controlePoste()
+    controleNom() &&
+    controleVille() &&
+    controleAdresse() &&
+    controleMail() &&
+    controlePoste()
   ) {
     localStorage.setItem("contact", JSON.stringify(contact));
-      //envoyer local
-  let sendTo = {
-    products,
-    contact
-  };
- //envoi vers serveur
- 
- const promise01 = fetch("http://localhost:3000/api/teddies/order", {
-  method: "POST",
-  body: JSON.stringify(sendTo),
-  headers: {
-    "Content-Type": "application/json",
-    
-  },
-});
+    //envoyer local
+    let sendTo = {
+      products,
+      contact,
+    };
+    //envoi vers serveur
 
+    const promise01 = fetch("http://localhost:3000/api/teddies/order", {
+      method: "POST",
+      body: JSON.stringify(sendTo),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-  //result serveur
-  promise01.then(async (response) => {
-    try {
-      const contenu = await response.json();
-    } catch (e) {}
-    
-  });
+    //result serveur
+    promise01.then(async (response) => {
+      try {
+        const contenu = await response.json();
+        //recupération id  id dans local
 
-    
+        localStorage.setItem("idOrder",contenu.orderId)
+
+        //Page de confirmation
+        window.location ="/confirmation.html"
+
+      } catch (e) {}
+    });
   } else {
     alert("Le formulaire n'est pas complet !");
   }
-  
 });
