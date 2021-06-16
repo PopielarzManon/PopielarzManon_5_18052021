@@ -101,9 +101,9 @@ btnEnvoi.addEventListener("click", (e) => {
     email: document.querySelector("#mail").value,
     
   };
-  // const poste = {
-  //   poste: document.querySelector("#poste").value
-  // };
+  const poste = {
+    poste: document.querySelector("#poste").value
+  };
 
   const regExText = (value) => {
     return /^[A-Za-z 0-9]{3,25}$/.test(value);
@@ -146,17 +146,17 @@ btnEnvoi.addEventListener("click", (e) => {
     }
   }
 
-  // function controlePoste() {
-  //   const okPoste = poste;
-  //   if (/^[0-9]{5}$/.test(okPoste)) {
-  //     document.querySelector(".noPoste").textContent = "";
-  //     return true;
-  //   } else {
-  //     document.querySelector(".noPoste").textContent =
-  //       "Veuiller rentrer un code postal valide";
-  //     return false;
-  //   }
-  // }
+  function controlePoste() {
+    const okPoste = poste.poste;
+    if (/^[0-9]{5}$/.test(okPoste)) {
+      document.querySelector(".noPoste").textContent = "";
+      return true;
+    } else {
+      document.querySelector(".noPoste").textContent =
+        "Veuiller rentrer un code postal valide";
+      return false;
+    }
+  }
 
   function controleMail() {
     const okMail = contact.email;
@@ -171,47 +171,34 @@ btnEnvoi.addEventListener("click", (e) => {
   }
 
 //////////////////////////////////////////////////////////////////////////////////////
-
-  //CONDITION LOCAL STORAGE OK//
-  if (
-    controleNom() &&
-    controleVille() &&
-    controleAdresse() &&
-    // controlePoste() &&
-    controleMail()
-  ) {
-    localStorage.setItem("contact", JSON.stringify(contact));
-  } else {
-    alert("Le formulaire n'est pas complet !");
-  }
-  
-  
-  ////////////////////////////////////////////////////////////////
-  
-  const products = [] ;
+const products = [] ;
 for (let t = 0; t < valueProducts.length; t++) {
   let getId = valueProducts[t].idDuProduit
   products.push(getId)
   
 }
-/////////////////////////////////////////////////////////////
-
-  //envoyer local
+  //CONDITION LOCAL STORAGE OK//
+  if (
+    controleNom() && controleVille() && controleAdresse() && controleMail() && controlePoste()
+  ) {
+    localStorage.setItem("contact", JSON.stringify(contact));
+      //envoyer local
   let sendTo = {
     products,
     contact
   };
-  //envoi vers serveur
-  const promise01 = fetch("http://localhost:3000/api/teddies/order", {
-    method: "POST",
-    body: JSON.stringify(sendTo),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  console.log(promise01);
-  console.log("promise01");
+ //envoi vers serveur
  
+ const promise01 = fetch("http://localhost:3000/api/teddies/order", {
+  method: "POST",
+  body: JSON.stringify(sendTo),
+  headers: {
+    "Content-Type": "application/json",
+    
+  },
+});
+
+
   //result serveur
   promise01.then(async (response) => {
     try {
@@ -219,5 +206,10 @@ for (let t = 0; t < valueProducts.length; t++) {
     } catch (e) {}
     
   });
+
+    
+  } else {
+    alert("Le formulaire n'est pas complet !");
+  }
   
 });
